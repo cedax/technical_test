@@ -6,8 +6,6 @@ import './SearchBar.css';
 export const BarrraBusqueda = () => {
     const [busqueda, setBusqueda] = useState("");
     
-    const percentage = 73000;
-
     const {setListaProductos} = useContext(BusquedaContext);
 
     const actualizaBusqueda = (busqueda:EventTarget) => {

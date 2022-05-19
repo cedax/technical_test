@@ -5,7 +5,7 @@ interface Action {
     type: string;
 }
 
-export default function busquedaReducer(state: ItemML[], action: any) {
+export default function busquedaReducer(state: ItemML[], action: Action) {
     switch (action.type) {
         case 'SET_PRODUCTOS':
             return [...action.payload.productos];
