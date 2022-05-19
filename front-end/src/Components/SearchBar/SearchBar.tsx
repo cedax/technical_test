@@ -24,10 +24,10 @@ export const BarrraBusqueda = () => {
         setBarraBusqueda(true);
         intervaloBarraBusqueda = setInterval(() => {
             if(porcentajeBarra < 90) {
-                porcentajeBarra+=10;
+                porcentajeBarra+=15;
                 setPorcentajeBarra(porcentajeBarra);
             }
-        }, 40);
+        }, 10);
 
         const url = `https://technicaltest-back.herokuapp.com/api/search?query=${busqueda}`;
         fetch(url)
