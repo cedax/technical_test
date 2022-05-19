@@ -16,6 +16,6 @@
     margin-top: 15px;
 }
 
-.filtros .btn:first-child{
-    margin-right: 1em;
+.filtros .btn{
+    margin-left: 1em;
 }

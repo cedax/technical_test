@@ -19,7 +19,7 @@ export const Producto = ({producto}:Props) => {
               <h5 className="fw-bolder titulo">{producto.title}</h5>
               <div className="detalles mt-1 mb-1">
                 <div className="badge bg-dark text-white stock">Stock: {producto.available_quantity}</div>
-                <div className="badge bg-dark text-white mb-2">Estado: {producto.condition}</div>
+                <div className="badge bg-dark text-white mb-2">Condicion: {producto.condition}</div>
               </div>
               <div className="precio">
                 <span>${producto.price} ARS</span>

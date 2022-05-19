@@ -10,8 +10,8 @@ export const Catalogo = () => {
   let productos = getListaProductos();
 
   const productosPaginacion:any = [];
-  for (let i = 0; i < productos.length; i += 20) {
-    productosPaginacion.push(productos.slice(i, i + 20));
+  for (let i = 0; i < productos.length; i += 30) {
+    productosPaginacion.push(productos.slice(i, i + 30));
   }
 
   let paginationCount = productosPaginacion.length;
@@ -36,12 +36,22 @@ export const Catalogo = () => {
     setListaProductos(order);
   }
 
+  const ordenarPorCondicion = () => {
+    let order = productos.sort((a:any, b:any) => {
+      if (a.condition > b.condition) {
+        return -1;
+      }
+    });
+    setListaProductos(order);
+  }
+
   return (
     <Fragment>
       {productos.length > 0 && (
         <div className="filtros">
           <button className="btn btn-primary" onClick={() => ordenarDeMenorAMayor()}>Order de menor a mayor</button>
           <button className="btn btn-primary" onClick={() => ordenarDeMayorAMenor()}>Order de mayor a menor</button>
+          <button className="btn btn-primary" onClick={() => ordenarPorCondicion()}>Order por condición</button>
         </div>
       )}
 
