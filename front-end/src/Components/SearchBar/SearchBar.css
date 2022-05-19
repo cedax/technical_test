@@ -1,0 +1,22 @@
+@media (min-width: 768px) {
+    .collapse{
+        display: flex;
+        justify-content: center;
+    }
+    
+    .navbar {
+        margin: 10px 0;
+    }
+}
+
+.form-busqueda{
+    width: 80%;
+}
+
+@media (max-width: 767px) {
+    .form-busqueda{
+        margin-top: 20px;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+}

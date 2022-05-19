@@ -1,0 +1,13 @@
+.divImagen {
+    width:100%;
+    display:flex;
+    justify-content: center;
+}
+
+.divImagen img {
+    width:150px;
+}
+
+.stock {
+    margin-right: 10px;
+}

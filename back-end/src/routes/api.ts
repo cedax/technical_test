@@ -13,6 +13,11 @@ router.use((req, res, next) => {
             message: 'Falta el parametro de query /api/search?query=BUSQUEDA',
         });
     }
+
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
     next();
     return 0;
 });
