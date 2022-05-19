@@ -17,7 +17,7 @@ export const BarrraBusqueda = () => {
         e.preventDefault();
         if(busqueda.trim() === "") return;
 
-        const url = `http://127.0.0.1:5100/api/search?query=${busqueda}`;
+        const url = `https://technicaltest-back.herokuapp.com/api/search?query=${busqueda}`;
         fetch(url)
             .then(respuesta => respuesta.json())
             .then(resultado => {
