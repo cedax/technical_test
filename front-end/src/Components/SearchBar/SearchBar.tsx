@@ -5,7 +5,9 @@ import './SearchBar.css';
 
 export const BarrraBusqueda = () => {
     const [busqueda, setBusqueda] = useState("");
-    
+    const [barraBusqueda, setBarraBusqueda] = useState(false);
+    let intervaloBarraBusqueda:any;
+
     const {setListaProductos} = useContext(BusquedaContext);
 
     const actualizaBusqueda = (busqueda:EventTarget) => {
@@ -13,22 +15,49 @@ export const BarrraBusqueda = () => {
         setBusqueda(input.value);
     }
 
+    
     const buscar = (e:any) => {
         e.preventDefault();
         if(busqueda.trim() === "") return;
+        
+        let porcentajeBarra = 0;
+        setBarraBusqueda(true);
+        intervaloBarraBusqueda = setInterval(() => {
+            if(porcentajeBarra < 90) {
+                porcentajeBarra+=10;
+                setPorcentajeBarra(porcentajeBarra);
+            }
+        }, 40);
 
         const url = `https://technicaltest-back.herokuapp.com/api/search?query=${busqueda}`;
         fetch(url)
             .then(respuesta => respuesta.json())
             .then(resultado => {
                 setListaProductos(resultado);
+                clearInterval(intervaloBarraBusqueda);
+                setPorcentajeBarra(0);
             });
 
         setBusqueda("");
     }
 
+    const setPorcentajeBarra = (porcentaje:number) => {
+        const barra = document.getElementById("barraBusqueda");
+        if(barra) {
+            barra.style.width = `${porcentaje}%`;
+        }
+        if(porcentaje === 0) {
+            setBarraBusqueda(false);
+        }
+    }
+
     return (
         <>
+            {barraBusqueda && (
+            <div className="progress">
+                <div id="barraBusqueda" className="progress-bar" role="progressbar" style={{width:"25%"}} aria-valuenow={25} aria-valuemin={0} aria-valuemax={100}></div>
+            </div>
+            )}
             <nav className="navbar navbar-expand-md navbar-light bg-light">
                 <div className="container px-4 px-lg-5"><a className="navbar-brand" href="#!">Prueba tecnica</a>
                     <button className="navbar-toggler shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>

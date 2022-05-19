@@ -6,17 +6,13 @@ import './Catalogo.css';
 
 export const Catalogo = () => {
   const { getListaProductos, setListaProductos } = useContext(BusquedaContext);
-
+  const [pagination, setPagination] = useState(0);
   let productos = getListaProductos();
 
   const productosPaginacion:any = [];
   for (let i = 0; i < productos.length; i += 30) {
     productosPaginacion.push(productos.slice(i, i + 30));
   }
-
-  let paginationCount = productosPaginacion.length;
-
-  const [pagination, setPagination] = useState(0);
 
   const ordenarDeMayorAMenor = () => {
     let order = productos.sort((a:any, b:any) => {
@@ -70,7 +66,7 @@ export const Catalogo = () => {
 
       <div className="pagination">
         {
-          paginationCount > 1 ?
+          productosPaginacion.length > 1 ?
               <div className="d-flex justify-content-center">
                 {
                   productosPaginacion.map((productos: ItemML[], index: number) => {

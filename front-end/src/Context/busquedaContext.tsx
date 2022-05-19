@@ -4,7 +4,6 @@ import { ItemML } from "../models/item";
 import busquedaReducer from "./busquedaReducer";
 
 const estadoInicial:any = {};
-
 const BusquedaContext = createContext(estadoInicial);
 
 interface props {
