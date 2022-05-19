@@ -18,10 +18,6 @@ const ContextProvider = ({children}:props) => {
         dispatch({type: 'SET_PRODUCTOS', payload: {productos}});
     }
 
-    const limpiarListaProductos = () => {
-        dispatch({type: 'LIMPIAR_PRODUCTOS'});
-    }
-
     const getListaProductos = () => {
         return state;
     }
