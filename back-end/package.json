@@ -26,6 +26,7 @@
   },
   "scripts": {
     "dev": "nodemon --watch src/** --ext ts --ignore src/**/*.spec.ts --exec ts-node src/index.ts",
-    "lint": "eslint --ext .ts src/**/*.ts"
+    "lint": "eslint --ext .ts src/**/*.ts",
+    "start": "node dist/index.js"
   }
 }
