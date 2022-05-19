@@ -8,3 +8,14 @@
     align-items: center;
     margin-bottom: 40px;
 }
+
+.filtros{
+    display: flex;
+    justify-content: right;
+    margin-right: 1em;
+    margin-top: 15px;
+}
+
+.filtros .btn:first-child{
+    margin-right: 1em;
+}
