@@ -1,16 +1,9 @@
-import { createContext } from "react";
+import { createContext, useState, useReducer } from "react";
+import { ItemML } from "../models/item";
 
-const estadoInicial = {
-    productos: [
-        {
-            id: 1,
-            nombre: "Producto 1",
-            precio: 100,
-            descripcion: "Descripción del producto 1",
-            imagen: "https://via.placeholder.com/150"
-        },
-    ]
-};
+import busquedaReducer from "./busquedaReducer";
+
+const estadoInicial:any = {};
 
 const BusquedaContext = createContext(estadoInicial);
 
@@ -19,7 +12,21 @@ interface props {
 }
 
 const ContextProvider = ({children}:props) => {
-    return <BusquedaContext.Provider value={estadoInicial}>
+    const [state, dispatch] = useReducer(busquedaReducer, estadoInicial);
+
+    const setListaProductos = (productos:ItemML[]) => {
+        dispatch({type: 'SET_PRODUCTOS', payload: {productos}});
+    }
+
+    const limpiarListaProductos = () => {
+        dispatch({type: 'LIMPIAR_PRODUCTOS'});
+    }
+
+    const getListaProductos = () => {
+        return state;
+    }
+
+    return <BusquedaContext.Provider value={{...estadoInicial, setListaProductos, getListaProductos}}>
         {children}
     </BusquedaContext.Provider>
 };

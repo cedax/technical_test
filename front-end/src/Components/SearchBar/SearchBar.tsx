@@ -1,8 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { BusquedaContext } from "../../Context/busquedaContext";
+
 import './SearchBar.css';
 
 export const BarrraBusqueda = () => {
     const [busqueda, setBusqueda] = useState("");
+    
+    const percentage = 73000;
+
+    const {setListaProductos} = useContext(BusquedaContext);
 
     const actualizaBusqueda = (busqueda:EventTarget) => {
         const input = busqueda as HTMLInputElement;
@@ -16,7 +22,9 @@ export const BarrraBusqueda = () => {
         const url = `http://127.0.0.1:5100/api/search?query=${busqueda}`;
         fetch(url)
             .then(respuesta => respuesta.json())
-            .then(resultado => console.log(resultado));
+            .then(resultado => {
+                setListaProductos(resultado);
+            });
 
         setBusqueda("");
     }
